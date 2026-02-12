@@ -6,12 +6,18 @@ import {
   Building2,
   Code2,
   Download,
+  Users,
+  Code,
   ExternalLink,
   Globe,
+  FileText,
   GraduationCap,
   Languages,
   Linkedin,
+  Github,
   Mail,
+  Trophy,
+  Award,
   MapPin,
   Moon,
   Phone,
@@ -30,7 +36,7 @@ const RESUME_DATA = {
     name: "Pranav VM",
     title: "Full Stack Developer & AI Engineer",
     summary:
-      "B.E. Computer Science student (CGPA: 8.9) with strong expertise in Full Stack Development and Generative AI. Experienced in building scalable MERN applications and agentic AI solutions using LangChain and CrewAI. Proven track record in hackathons and open-source contributions.",
+     "Building scalable web apps and agentic AI systems Full Stack MERN + GenAI enthusiast",
     email: "mailidofpranav@gmail.com",
     phone: "+91 9791280945",
     location: "Coimbatore, India",
@@ -57,7 +63,9 @@ const RESUME_DATA = {
         "Submitted 6+ pull requests enhancing retrieval workflows and overall code maintainability.",
       ],
     },
-    {
+    
+  ],
+leadership: [ {
       role: "Vice President",
       company: "Software Development Club, KPRIET",
       period: "Jul 2024 - May 2025",
@@ -83,7 +91,7 @@ const RESUME_DATA = {
     },
     {
       title: "Smart Parking Solution",
-      type: "IoT | CV |Full Stack",
+      type: "IoT / CV ",
       description:
         "IoT-enabled parking system using ESP-32 CAM and OpenCV for real-time vehicle detection and occupancy tracking.",
       tech: ["React", "Node.js", "OpenCV", "IoT","Computer"],
@@ -103,15 +111,18 @@ const RESUME_DATA = {
       "TypeScript",
       "JavaScript",
       "HTML/CSS",
-      "Tailwind",
+      "Tailwind"
     ],
     backend: [
       "Node.js",
       "Express.js",
       "Flask",
-      "PostgreSQL",
-      "MongoDB",
-      "Supabase",
+      "REST APIs",
+      "FAST API",
+      "JWT"
+    ],
+    Databases:[
+      "SQL", "MySQL", "PostgreSQL", "MongoDB", "Supabase"
     ],
      GenAI:[ "LangChain", "CrewAI", "LangGraph", "MCP", "ChromaDB", "YOLO", "OpenCV", "Vector DB", "Motia"],
     CloudDevops:["AWS (EC2, S3)", "Docker", "GitHub Actions", "CI/CD"],
@@ -124,6 +135,34 @@ const RESUME_DATA = {
     { name: "Hindi", level: "Professional" },
     { name: "Tamil", level: "Native" },
   ],
+  patents: [
+    {
+      title: "Smart Parking Solution Implementation Methodology",
+      status: "Filed",
+      year: "2024"
+    }
+  ],
+  achievements: [
+    "1st Prize, Code Hunt at ASTRANOVA'25 (CIT)",
+    "3rd Prize, Yudham'24 Hackathon for Smart Parking Solution",
+    "Winner, Ignitron Hackathon for PII AI-Powered Solution"
+  ],
+  certifications: [
+    {
+      title: "HackerRank Problem Solving Intermediate",
+      issuer: "HackerRank",
+      credentialId: "2df0c1a7c087",
+      thumbnail: "/images/HackerRank.jpg",
+      url: "https://www.hackerrank.com/certificates/2df0c1a7c087"
+    },
+    {
+      title: "MongoDB Certified Developer, Associate (C100DEV)",
+      issuer: "MongoDB",
+      credentialId: "5c8a0e38-5474-4f03-acc3-e745e79dcfb0",
+      thumbnail: "/images/MongoDB.jpg",
+      url: "https://www.credly.com/badges/5c8a0e38-5474-4f03-acc3-e745e79dcfb0/public_url"
+    }
+  ]
 };
 
 export default function StandardResume() {
@@ -165,13 +204,12 @@ export default function StandardResume() {
           <div className="flex flex-col md:flex-row gap-8 items-center md:items-start text-center md:text-left">
             {/* Avatar using Shadcn Component */}
             <div className="relative shrink-0">
-              <Avatar className="h-32 w-32 md:h-40 md:w-40 border-4 shadow-2xl border-white">
+              <Avatar className="h-48 w-48 md:h-56 md:w-56 border-4 shadow-2xl border-white">
                <AvatarImage
-  src="/Users/pranavvm/Workspace/projects/my-portfolio/app/images/Profile.jpg"
+  src="/images/Profile.jpg"
   alt={RESUME_DATA.personalInfo.name}
-  onError={(e) => console.error("Image failed to load:", e)}
 />
-                <AvatarFallback className={`text-4xl font-bold ${
+                <AvatarFallback className={`text-5xl md:text-6xl font-bold ${
                   isDark ? 'text-gray-400 bg-gray-700' : 'text-slate-400 bg-slate-100'
                 }`}>
                   {RESUME_DATA.personalInfo.initials}
@@ -248,9 +286,12 @@ export default function StandardResume() {
                     : 'bg-slate-900 hover:bg-slate-800 shadow-slate-900/20'
                 }`}
                 size="lg"
+                asChild
               >
-                <Download className="h-4 w-4 mr-2" />
-                Download CV
+                <a href="/Pranav_Vm.pdf" download="Pranav_VM_Resume.pdf">
+                  <Download className="h-4 w-4 mr-2" />
+                  Download CV
+                </a>
               </Button>
               <div className="flex gap-2 justify-center">
                 <Button
@@ -261,9 +302,12 @@ export default function StandardResume() {
                       ? 'text-gray-400 hover:text-blue-400 hover:bg-gray-700'
                       : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'
                   }`}
+                  asChild
                 >
-                  <Linkedin className="h-5 w-5" />
-                  <span className="sr-only">LinkedIn</span>
+                  <a href="https://www.linkedin.com/in/vm-pranav15/" target="_blank" rel="noopener noreferrer">
+                    <Linkedin className="h-5 w-5" />
+                    <span className="sr-only">LinkedIn</span>
+                  </a>
                 </Button>
                 <Button
                   variant="ghost"
@@ -273,9 +317,27 @@ export default function StandardResume() {
                       ? 'text-gray-400 hover:text-blue-400 hover:bg-gray-700'
                       : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'
                   }`}
+                  asChild
                 >
-                  <Globe className="h-5 w-5" />
-                  <span className="sr-only">Website</span>
+                  <a href="https://github.com/VMPRANAV" target="_blank" rel="noopener noreferrer">
+                    <Github className="h-5 w-5" />
+                    <span className="sr-only">GitHub</span>
+                  </a>
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className={`h-10 w-10 rounded-full ${
+                    isDark
+                      ? 'text-gray-400 hover:text-blue-400 hover:bg-gray-700'
+                      : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'
+                  }`}
+                  asChild
+                >
+                  <a href="https://leetcode.com/mailidofpranav" target="_blank" rel="noopener noreferrer">
+                    <Code className="h-5 w-5" />
+                    <span className="sr-only">LeetCode</span>
+                  </a>
                 </Button>
               </div>
             </div>
@@ -433,6 +495,100 @@ export default function StandardResume() {
                   </Card>
                 ))}
               </div>
+
+              <div className="mt-6 text-center">
+                <a
+                  href="https://github.com/VMPRANAV"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center gap-2 text-sm font-medium transition-colors ${
+                    isDark
+                      ? 'text-blue-400 hover:text-blue-300'
+                      : 'text-blue-600 hover:text-blue-700'
+                  }`}
+                >
+                  <Github className="h-4 w-4" />
+                  View more on GitHub
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              </div>
+            </section>
+
+            <Separator className={isDark ? 'bg-gray-700' : 'bg-slate-200'} />
+
+            {/* Certifications Section */}
+            <section aria-labelledby="certifications-heading">
+              <div className="flex items-center gap-3 mb-6">
+                <div className={`p-2.5 rounded-xl ${
+                  isDark ? 'bg-blue-900/30 text-blue-400' : 'bg-blue-50 text-blue-600'
+                }`}>
+                  <Award className="h-5 w-5" />
+                </div>
+                <h2
+                  id="certifications-heading"
+                  className={`text-2xl font-bold tracking-tight ${
+                    isDark ? 'text-gray-100' : 'text-slate-900'
+                  }`}
+                >
+                  Certifications
+                </h2>
+              </div>
+
+              <div className="grid gap-5">
+                {RESUME_DATA.certifications.map((cert, index) => (
+                  <Card
+                    key={index}
+                    className={`group shadow-sm transition-all ${
+                      isDark
+                        ? 'border-gray-700 bg-gray-800/50 hover:shadow-lg hover:border-blue-700'
+                        : 'border-slate-200 bg-white hover:shadow-md hover:border-blue-200'
+                    }`}
+                  >
+                    <CardContent className="p-5">
+                      <a
+                        href={cert.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block"
+                      >
+                        <div className="flex gap-4">
+                          <div className={`shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 ${
+                            isDark ? 'border-gray-700' : 'border-slate-200'
+                          }`}>
+                            <img
+                              src={cert.thumbnail}
+                              alt={cert.title}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-start justify-between gap-2 mb-2">
+                              <h3 className={`font-bold text-base ${
+                                isDark ? 'text-gray-100' : 'text-slate-900'
+                              }`}>
+                                {cert.title}
+                              </h3>
+                              <ExternalLink className={`h-3.5 w-3.5 shrink-0 ${
+                                isDark ? 'text-gray-500' : 'text-slate-400'
+                              }`} />
+                            </div>
+                            <p className={`text-sm font-medium mb-2 ${
+                              isDark ? 'text-blue-400' : 'text-blue-600'
+                            }`}>
+                              {cert.issuer}
+                            </p>
+                            <p className={`text-xs ${
+                              isDark ? 'text-gray-400' : 'text-slate-500'
+                            }`}>
+                              Credential ID: {cert.credentialId}
+                            </p>
+                          </div>
+                        </div>
+                      </a>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </section>
           </div>
 
@@ -493,7 +649,7 @@ export default function StandardResume() {
                     isDark ? 'text-gray-100' : 'text-slate-900'
                   }`}
                 >
-                  Skills
+                  Technical Skills
                 </h2>
               </div>
 
@@ -544,6 +700,29 @@ export default function StandardResume() {
                   </div>
                 </div>
                 <div>
+                  <div>
+                  <h3 className={`text-xs font-bold uppercase tracking-wider mb-3 flex items-center gap-2 ${
+                    isDark ? 'text-gray-400' : 'text-slate-500'
+                  }`}>
+                    <span className={`w-1.5 h-1.5 rounded-full ${isDark ? 'bg-blue-500' : 'bg-blue-600'}`} />
+                   Databases
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {RESUME_DATA.skills.Databases.map((skill, i) => (
+                      <Badge
+                        key={i}
+                        variant="secondary"
+                        className={isDark
+                          ? 'bg-gray-700 border border-gray-600 text-gray-200 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors'
+                          : 'bg-white border border-slate-200 text-slate-950 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors'
+                        }
+                      >
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+                <div></div>
                   <h3 className={`text-xs font-bold uppercase tracking-wider mb-3 flex items-center gap-2 ${
                     isDark ? 'text-gray-400' : 'text-slate-500'
                   }`}>
@@ -615,13 +794,17 @@ export default function StandardResume() {
 
             <Separator className={isDark ? 'bg-gray-700' : 'bg-slate-200'} />
 
-            {/* Languages */}
+            {/* Languages Section */}
             <section aria-labelledby="languages-heading">
-              <div className="flex items-center gap-3 mb-5">
-                <Languages className={`h-5 w-5 ${isDark ? 'text-blue-400' : 'text-blue-600'}`} />
+              <div className="flex items-center gap-3 mb-4">
+                <div className={`p-2 rounded-lg ${
+                  isDark ? 'bg-blue-900/30 text-blue-400' : 'bg-blue-50 text-blue-600'
+                }`}>
+                  <Globe className="h-4 w-4" />
+                </div>
                 <h2
                   id="languages-heading"
-                  className={`text-lg font-bold tracking-tight uppercase ${
+                  className={`text-xl font-bold ${
                     isDark ? 'text-gray-100' : 'text-slate-900'
                   }`}
                 >
@@ -630,28 +813,168 @@ export default function StandardResume() {
               </div>
               <div className="space-y-3">
                 {RESUME_DATA.languages.map((lang, index) => (
-                  <div
-                    key={index}
-                    className={`flex justify-between items-center p-2 rounded-lg border ${
-                      isDark
-                        ? 'bg-gray-700 border-gray-600'
-                        : 'bg-white border-slate-200'
-                    }`}
-                  >
+                  <div key={index} className="flex justify-between items-center">
                     <span className={`font-medium ${
-                      isDark ? 'text-gray-100' : 'text-slate-900'
+                      isDark ? 'text-gray-200' : 'text-slate-700'
                     }`}>
                       {lang.name}
                     </span>
                     <Badge
                       variant="secondary"
                       className={isDark
-                        ? 'bg-gray-600 text-gray-200 border border-gray-500'
-                        : 'bg-slate-50 text-slate-900 border border-slate-200'
+                        ? 'bg-blue-900/30 text-blue-300 border border-blue-800'
+                        : 'bg-blue-50 text-blue-700 border border-blue-100'
                       }
                     >
                       {lang.level}
                     </Badge>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <Separator className={isDark ? 'bg-gray-700' : 'bg-slate-200'} />
+
+            {/* Patents Section */}
+            <section aria-labelledby="patents-heading">
+              <div className="flex items-center gap-3 mb-4">
+                <div className={`p-2 rounded-lg ${
+                  isDark ? 'bg-blue-900/30 text-blue-400' : 'bg-blue-50 text-blue-600'
+                }`}>
+                  <FileText className="h-4 w-4" />
+                </div>
+                <h2
+                  id="patents-heading"
+                  className={`text-xl font-bold ${
+                    isDark ? 'text-gray-100' : 'text-slate-900'
+                  }`}
+                >
+                  Patents
+                </h2>
+              </div>
+              <div className="space-y-3">
+                {RESUME_DATA.patents.map((patent, index) => (
+                  <div key={index} className={`p-4 rounded-lg border ${
+                    isDark ? 'bg-gray-800/30 border-gray-700' : 'bg-slate-50 border-slate-200'
+                  }`}>
+                    <h3 className={`font-semibold text-sm mb-2 ${
+                      isDark ? 'text-gray-200' : 'text-slate-800'
+                    }`}>
+                      {patent.title}
+                    </h3>
+                    <div className="flex gap-2">
+                      <Badge
+                        variant="outline"
+                        className={isDark
+                          ? 'text-yellow-400 border-yellow-600'
+                          : 'text-yellow-700 border-yellow-300'
+                        }
+                      >
+                        {patent.status}
+                      </Badge>
+                      <Badge
+                        variant="secondary"
+                        className={isDark
+                          ? 'bg-blue-900/30 text-blue-300 border border-blue-800'
+                          : 'bg-blue-50 text-blue-700 border border-blue-100'
+                        }
+                      >
+                        {patent.year}
+                      </Badge>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            <Separator className={isDark ? 'bg-gray-700' : 'bg-slate-200'} />
+
+            {/* Achievements Section */}
+            <section aria-labelledby="achievements-heading">
+              <div className="flex items-center gap-3 mb-4">
+                <div className={`p-2 rounded-lg ${
+                  isDark ? 'bg-blue-900/30 text-blue-400' : 'bg-blue-50 text-blue-600'
+                }`}>
+                  <Trophy className="h-4 w-4" />
+                </div>
+                <h2
+                  id="achievements-heading"
+                  className={`text-xl font-bold ${
+                    isDark ? 'text-gray-100' : 'text-slate-900'
+                  }`}
+                >
+                  Achievements
+                </h2>
+              </div>
+              <ul className="space-y-3">
+                {RESUME_DATA.achievements.map((achievement, index) => (
+                  <li key={index} className="flex gap-3">
+                    <div className={`mt-1.5 h-2 w-2 rounded-full shrink-0 ${
+                      isDark ? 'bg-blue-400' : 'bg-blue-600'
+                    }`} />
+                    <span className={`text-sm leading-relaxed ${
+                      isDark ? 'text-gray-300' : 'text-slate-600'
+                    }`}>
+                      {achievement}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <Separator className={isDark ? 'bg-gray-700' : 'bg-slate-200'} />
+
+            {/* Leadership Section */}
+            <section aria-labelledby="leadership-heading">
+              <div className="flex items-center gap-3 mb-4">
+                <div className={`p-2 rounded-lg ${
+                  isDark ? 'bg-blue-900/30 text-blue-400' : 'bg-blue-50 text-blue-600'
+                }`}>
+                  <Users className="h-4 w-4" />
+                </div>
+                <h2
+                  id="leadership-heading"
+                  className={`text-xl font-bold ${
+                    isDark ? 'text-gray-100' : 'text-slate-900'
+                  }`}
+                >
+                  Leadership
+                </h2>
+              </div>
+              <div className="space-y-4">
+                {RESUME_DATA.leadership.map((item, index) => (
+                  <div key={index} className={`p-4 rounded-lg border ${
+                    isDark ? 'bg-gray-800/30 border-gray-700' : 'bg-slate-50 border-slate-200'
+                  }`}>
+                    <h3 className={`font-bold text-sm mb-1 ${
+                      isDark ? 'text-gray-100' : 'text-slate-900'
+                    }`}>
+                      {item.role}
+                    </h3>
+                    <p className={`text-xs font-medium mb-2 ${
+                      isDark ? 'text-blue-400' : 'text-blue-600'
+                    }`}>
+                      {item.company}
+                    </p>
+                    <p className={`text-xs mb-3 ${
+                      isDark ? 'text-gray-400' : 'text-slate-500'
+                    }`}>
+                      {item.period}
+                    </p>
+                    <ul className="space-y-2">
+                      {item.description.map((desc, i) => (
+                        <li key={i} className="flex gap-2">
+                          <div className={`mt-1.5 h-1.5 w-1.5 rounded-full shrink-0 ${
+                            isDark ? 'bg-blue-400' : 'bg-blue-600'
+                          }`} />
+                          <span className={`text-xs leading-relaxed ${
+                            isDark ? 'text-gray-300' : 'text-slate-600'
+                          }`}>
+                            {desc}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 ))}
               </div>
